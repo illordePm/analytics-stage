@@ -1,0 +1,11 @@
+<mat-form-field style="width:100%">
+
+  <mat-label>Seleziona un mese</mat-label>
+  
+  <mat-select [panelClass]="'panel'" [value]="currMonth" (selectionChange)="onSelectionChange($event)">
+    @for (month of months(); track month.value) {
+      <mat-option [value]="month.value" style="background-color: white;">{{ month.label }}</mat-option>
+    }
+  </mat-select>
+
+</mat-form-field>

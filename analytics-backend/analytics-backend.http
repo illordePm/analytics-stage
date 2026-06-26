@@ -1,0 +1,6 @@
+@analytics_backend_HostAddress = http://localhost:5052
+
+GET {{analytics_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

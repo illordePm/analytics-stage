@@ -1,0 +1,30 @@
+ul li a {   /*stile base per tutti i link*/
+  text-decoration: none; /*toglie sottolineato*/
+  color: blue;
+  display: block;   /*aggiusta un po' la grafica*/
+  padding: 12px 16px;
+  transition: background-color 0.5s;    /* cambia colore di sfondo -> transizione 
+  applicata ogni volta che cambia sfondo*/
+  border-radius: 5px;
+}
+
+/*effetto over(colore bianco) se non è la classe attiva */
+ul li a:hover:not(.classe-attiva) {
+  background-color: white;
+  border-radius: 10px;
+}
+
+/*classe attiva->necessita di priorità alta x sicurezza*/
+.classe-attiva {
+  background-color: blue !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.sidenav-sistemato {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,109 @@
+/*
+#container {
+  display: flex;
+  flex-direction: row;
+*/
+  /*align-items: stretch; forza tutti i componenti a raggiungere altezza massima*/
+  /*gap: 20px;            /*spazio tra le schede/grafico*/
+  /*margin: 0 5%;   /*sopra-sotto no margine, dx-sx margine del 5%*/
+  /*height: 400px;
+
+  
+}*/
+
+
+
+#grafico {
+  display: flex;    /*impone che anche il componente figlio occupa la larghezza del componente padre*/
+  flex: 5;             /*grafico usa il doppio dello spazio rispetto a schede per la larghezza*/
+}       
+
+#scheda {
+  display: flex;
+  flex: 1;             /*schede avranno la stessa identica larghezza*/
+}
+
+.grafico-dati, .report-dati {
+  width: 100%;
+  height: 100%;        /*sfrutta tutta l'altezza del container quindi del container*/
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;     /*evita che l'istogramma sbordi dall'arrotondamento */
+}
+
+mat-card-content {
+  flex-grow: 1;        /*spinge il footer con il grafico verso il basso in maniera "calma"
+  così da dare più spazio (quello bianco che verrebbe avanzato) al corpo per occupare più spazio*/
+}
+
+.testo-alto {
+  margin-top: 4px; 
+  color: rgb(100, 100, 100); 
+  font-weight: bold;          
+}
+
+.centrato {
+  display: inline-flex; 
+  gap: 20px;
+}
+
+.testo-positivo {
+  color: rgb(0, 175, 0); 
+  font-weight: bold;
+}
+.testo-negativo {
+  color: red; 
+  font-weight: bold;
+}
+
+.testo-nd{
+  color:blue;
+  font-weight: bold;;
+}
+
+#container{
+  display: grid;
+  /*dice grandezza e minima massima che ogni colonna può occupare*/
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;    /*spazio tra colonne */
+  padding: 16px 64px;
+
+  grid-template-areas: "a b c";
+  height: 400px;
+}
+
+#container-filtri{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;    /*spazio tra colonne */
+  padding: 16px 64px;
+}
+
+#grafico {
+  grid-area: a;
+}
+#scheda-1 {
+  grid-area: b;
+}
+#scheda-2 {
+  grid-area: c;
+}
+
+@media (max-width: 1300px){
+  #container-filtri{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1200px){
+  #container {
+    /*definisco 2 colonne per far stare b e c affiancate*/
+    grid-template-columns: 1fr 1fr;
+    
+    /*a occupa tutta la prima riga, b e c la seconda */
+    grid-template-areas: 
+      "a a"
+      "b c";
+  }
+}

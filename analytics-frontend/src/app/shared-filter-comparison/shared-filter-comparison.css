@@ -1,0 +1,9 @@
+::ng-deep .panel {
+  padding: 0 !important;
+}
+
+/*
+ng deep:
+ignora le regole di protezione e cerca questa classe in tutto il documento, anche fuori dal componente
+in quanto è generato fuori e dinamicamente
+*/

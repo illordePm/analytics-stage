@@ -1,0 +1,142 @@
+
+<h4 style="margin-left: 5%;">Vendite</h4>
+
+<div id="container-filtri">
+
+<app-shared-filter-shops (selectorChange)="onSelectorChange($event)"/>
+<app-shared-filter-month (selectedMonth)="onMonthChange($event)"/>
+<app-shared-filter-year (selectedYear)="onYearChange($event)"/>
+<app-shared-filter-comparison (comparisonChange)="onComparisonChange($event)"/>
+
+</div>
+
+
+
+
+<div id="container">
+
+  <div id="grafico">
+  <mat-card class="grafico-dati" appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title class="centrato">
+
+          <h5 class="testo-alto"> 
+              Totale venduto (andamento)
+          </h5>
+
+      </mat-card-title>
+    </mat-card-header>
+
+
+    <mat-card-content>
+        
+        @if(risposta())
+        {
+          <!-- types = line, bar, radar, pie, polarArea, doughnut, bubble and scatter -->
+          <!--[data]="provaChartData" prende i dati dal .ts , idem per le opzioni-->
+          <canvas baseChart [data]="provaChartData" [options]="provaChartOptions" [type]="'line'"></canvas>
+        }
+        @else {
+          <p>Caricamento dati del grafico in corso...</p>
+        }
+      </mat-card-content>
+
+    </mat-card>
+
+</div>
+
+
+
+
+  <div id="scheda1">
+    <mat-card class="report-dati" appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title class="centrato">
+        <div>
+          <h3 class="testo-alto"> 
+            Numero scontrini
+          </h3>
+
+          <h1> 
+            {{scontrinoTotaleValore()}}
+            <span style="color: rgb(155, 155, 155);  margin-top: 4px; font-size: medium;">({{mediaGiornalieraScontrinoTotaleValore() | number: '.2-2' }} al gg)</span>
+          </h1>
+        </div>
+
+      </mat-card-title>
+    </mat-card-header>
+
+
+    <mat-card-content>
+      
+      <h3 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+      <div class="{{ colorePercentualeTotaleScontrini() }}" style="display: inline-block;">
+        {{ scontriniTotalePercentuale() }}% 
+      </div>
+
+        vs {{ periodoPrecedente()}}
+      </h3>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+      <canvas baseChart [data]="scontriniTotaliIstogramma" [options]="barChartOptions" [type]="'bar'"></canvas>
+    </mat-card-footer>
+
+  </mat-card>
+
+</div>
+
+
+
+
+
+
+  <div id="scheda2">
+    <mat-card class="report-dati" appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title class="centrato">
+        <div>
+          <h3 class="testo-alto"> 
+            Scontrino medio
+          </h3>
+
+          <h1> 
+            € {{ scontrinoMedioValore()}}
+                        <!--  number:'1.2-2'
+             1 param = almeno una cifre intera (soprattutto se è 0<x<1)
+             2 param = almeno 2 cifre decimali
+             3 param = non superare le 2 cifre decimali   
+            -->
+          </h1>
+        </div>
+
+      </mat-card-title>
+    </mat-card-header>
+
+
+    <mat-card-content>
+      
+      <h3 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+      <div class="{{ colorePercentualeMediaScontrini() }}" style="display: inline-block;">
+        {{ scontriniMedioPercentuale()}}%
+      </div>
+
+        vs {{ periodoPrecedente()}}
+      </h3>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+      <canvas baseChart [data]="scontriniMediaIstogramma" [options]="barChartOptions" [type]="'bar'"></canvas>
+    </mat-card-footer>
+
+
+  </mat-card>
+
+</div>

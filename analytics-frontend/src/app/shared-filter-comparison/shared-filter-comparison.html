@@ -1,0 +1,23 @@
+<mat-form-field style="width:100%">
+  <mat-label>Seleziona metodo di confronto</mat-label>
+  
+  <!-- value è proprieta interna di mat per capire quale è l'opzione selezionata
+    quando cambia selezione (selectionChange)attiva evento on.... passando la scelta dell' utente (event.value)
+   -->
+
+
+   <!-- panel clas aggiunge la classe css "panel" al componente mat-select
+   in quanto alcune parti del componente sono generate dinamicamente e quindi
+   non già programmabili (soprattutto grafica) 
+   -->
+  <mat-select [panelClass]="'panel'" [value]="selectedComparison()" (selectionChange)="onComparisonChange($event.value)">
+    <mat-option style="background-color: white;" [value]="Comp.previousMonth">
+      Mese precedente
+    </mat-option>
+    <mat-option style="background-color: white;" [value]="Comp.sameMonthPreviousYear">
+      Stesso mese anno precedente</mat-option>
+  </mat-select>
+</mat-form-field>
+<!--
+<p style="margin-left: 5%;">You selected: {{ selectedComparison() }}</p>
+-->

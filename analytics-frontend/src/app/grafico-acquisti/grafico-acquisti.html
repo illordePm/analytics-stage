@@ -1,0 +1,69 @@
+
+<h4 style="margin-left: 5%;">Acquisti</h4>
+
+<div id="container_filtri">
+  <app-shared-filter-shops (selectorChange)="onSelectorChange($event)"/>
+  <app-shared-filter-month (selectedMonth)="onMonthChange($event)"/>
+  <app-shared-filter-year (selectedYear)="onYearChange($event)"/>
+  <app-shared-filter-comparison (comparisonChange)="onComparisonChange($event)"/>
+</div>
+
+
+<div id="container">
+  <!-- acquisto totale -->
+  <mat-card class="example-card" appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title class="centrato">
+
+          <h5 class="testo-alto">Totale acquistato (andamento)</h5>
+
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      
+      @if(rispostaTotale()) {
+        <!-- types = line, bar, radar, pie, polarArea, doughnut, bubble and scatter -->
+        <canvas baseChart [data]="provaChartData" [options]="provaChartOptions" [type]="'line'"></canvas>
+      }
+      @else {
+        <p>Caricamento dati del grafico in corso...</p>
+      }
+    
+    </mat-card-content>
+
+  </mat-card>
+
+  <!-- acquisto fornitori -->
+  <mat-card class="example-card" appearance="outlined">
+
+    <mat-card-header>
+      <mat-card-title class="centrato">
+
+          <h5 class="testo-alto">Acquistato per fornitore</h5>
+
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      @if(rispostaTotale()) {    
+        <canvas baseChart [data]="suppliersChartData" [options]="suppliersChartOptions" [type]="'bar'" [plugins]="suppliersPlugin"></canvas>
+      }
+      @else {
+        <p>Caricamento dati del grafico in corso...</p>
+      }
+    
+      <br>
+
+      <div style="display: inline-flex; width: 22%;">
+        <h3>Totale</h3>   
+        <h3 style="margin-left: auto;">€ {{ totalSuppliersPurchases() }}</h3>
+      </div>
+
+    </mat-card-content>
+
+
+  </mat-card>
+</div>

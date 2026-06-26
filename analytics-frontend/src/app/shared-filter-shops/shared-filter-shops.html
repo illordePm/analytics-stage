@@ -1,0 +1,17 @@
+<!-- filtri -->
+<mat-form-field style="width:100%">
+
+  <mat-label>Seleziona il negozio</mat-label>
+  
+  <mat-select [panelClass]="'panel'" [(value)]="selectedShop" (selectionChange)="onSelectorChange($event)">
+    <mat-option style="background-color: white;">Tutti</mat-option>
+    @for (shop of shopSignal(); track shop.code) {
+      <mat-option [value]="shop.shopId" style="background-color: white;">{{ shop.name }}</mat-option>
+    }
+  </mat-select>
+
+</mat-form-field>
+
+<!-- [class]="colorato()" 
+<p style="margin-left: 5%;">You selected: {{selectedShop()}}</p>
+-->

@@ -1,0 +1,208 @@
+<h4 style="margin-left: 5%;">KPI principali</h4>
+
+<div id="container-filtri">
+
+<app-shared-filter-shops (selectorChange)="onSelectorChange($event)"/>
+<app-shared-filter-month (selectedMonth)="onMonthChange($event)"/>
+<app-shared-filter-year (selectedYear)="onYearChange($event)"/>
+<app-shared-filter-comparison (comparisonChange)="onComparisonChange($event)"/>
+
+</div>
+
+
+<div id="container">
+
+
+          <!-- card -->
+      <mat-card class="example-card" appearance="outlined">
+
+        <mat-card-header>
+          <mat-card-title class="centrato">
+
+            <mat-icon fontSet="material-symbols-outlined" class="icona-cerchio">
+              shopping_cart
+            </mat-icon>
+
+            <div>
+              <h5 class="testo-alto"> 
+                Totale acquistato 
+              </h5>
+
+              <h2> 
+                € {{ totalBought()?.currentValue | number: '2.3-3' }} 
+              </h2>
+            </div>
+
+          </mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+          
+          <h5 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+            <!-- più efficiente con [] ed è una cosa "nativa"-->
+          <div [class]="getColore(calcoloPercentualeTotalBought())" style="display: inline-block;">
+            {{ calcoloPercentualeTotalBought() }}% 
+          </div>
+
+            vs {{ periodoPrecedente()}}
+          </h5>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+
+
+
+
+      <!-- card -->
+      <mat-card class="example-card" appearance="outlined">
+
+        <mat-card-header>
+          <mat-card-title class="centrato">
+
+            <mat-icon fontSet="material-symbols-outlined" class="icona-cerchio">
+              shopping_cart
+            </mat-icon>
+
+            <div>
+              <h5 class="testo-alto"> 
+                Totale Venduto
+              </h5>
+
+              <h2> 
+                € {{ totalSales()?.currentValue | number: '2.3-3' }}
+              </h2>
+            </div>
+
+          </mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+          
+          <h5 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+          <div [class]="getColore(calcoloPercentualeTotalSales())" style="display: inline-block;">
+            {{ calcoloPercentualeTotalSales() }}% 
+          </div>
+
+            vs {{ periodoPrecedente()}}
+          </h5>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+
+
+
+
+
+      <!-- card -->
+      <mat-card class="example-card" appearance="outlined">
+
+        <mat-card-header>
+          <mat-card-title class="centrato">
+
+            <mat-icon fontSet="material-symbols-outlined" class="icona-cerchio">
+              receipt_long
+            </mat-icon>
+
+            <div>
+              <h5 class="testo-alto"> 
+                Numero Scontrini
+              </h5>
+
+              <h2> 
+                @if(totalReceipt()) {
+                  {{ totalReceipt()?.currentValue }}
+                }
+                @else {
+                  <p>0</p>
+                }
+
+              </h2>
+            </div>
+
+          </mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+          
+          <h5 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+          <div [class]="getColore(calcoloPercentualeTotalReceipt())" style="display: inline-block;">
+            {{ calcoloPercentualeTotalReceipt() }}%
+          </div>
+
+            vs {{ periodoPrecedente()}}
+          </h5>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+
+
+
+
+
+      <!-- card -->
+      <mat-card class="example-card" appearance="outlined">
+
+        <mat-card-header>
+          <mat-card-title class="centrato">
+
+            <mat-icon fontSet="material-symbols-outlined" class="icona-cerchio">
+              euro_symbol
+            </mat-icon>
+
+            <div>
+              <h5 class="testo-alto"> 
+                Scontrino Medio
+              </h5>
+
+              <h2> 
+                € {{ averageReceipt()?.currentValue | number: '2.3-3' }}
+              </h2>
+            </div>
+
+          </mat-card-title>
+        </mat-card-header>
+
+
+        <mat-card-content>
+          
+          <h5 style="color: rgb(155, 155, 155);  margin-top: 4px;">
+
+          <div [class]="getColore(calcoloPercentualeAverageReceipt())" style="display: inline-block;">
+            {{ calcoloPercentualeAverageReceipt() }}%
+          </div>
+
+            vs {{ periodoPrecedente()}}
+          </h5>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,11 @@
+<mat-form-field style="width:100%">
+
+  <mat-label>Seleziona un anno</mat-label>
+  
+  <mat-select [panelClass]="'panel'" [value]="currentYear" (selectionChange)="onSelectionChange($event)">
+    @for (year of years(); track year.value) {
+      <mat-option [value]="year.value" style="background-color: white;">{{ year.value }}</mat-option>
+    }
+  </mat-select>
+
+</mat-form-field>

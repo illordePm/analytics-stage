@@ -1,0 +1,93 @@
+.example-card {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.icona-cerchio {
+  /* colore */
+  color: #3a58ff;             
+  background-color: #0cabcb1a; 
+
+  /* creazione del cerchio */
+  border-radius: 50%;         
+  padding: 12px;                /* spazio tra icona e bordo del cerchio */
+  
+  /* dimensioni del blocco */
+  width: 24px;               
+  height: 24px;
+  
+  /* allineamento centro */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ .testo-alto {
+  margin-top: 4px; 
+
+  color: rgb(100, 100, 100); 
+  font-weight: bold;          
+}
+
+.centrato {
+  display: inline-flex; 
+  gap: 20px;
+}
+
+/* colori percentuali */
+.testo-positivo {
+  color: rgb(0, 175, 0); 
+  font-weight: bold;
+}
+.testo-negativo {
+  color: red; 
+  font-weight: bold;
+}
+
+.testo-nd{
+  color: blue; 
+  font-weight: bold;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /*crea 4 colonne di larghezza uguale 
+  fr= prendi tutto lo spazio e dividilo in parti uguali*/
+  gap: 32px;    /*spazio tra colonne */
+  padding: 16px 64px;
+}
+
+#container-filtri{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;    /*spazio tra colonne */
+  padding: 16px 64px;
+}
+
+@media (max-width: 1300px){
+  #container-filtri{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #container{
+     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px){
+  /*
+    #container-filtri{
+    grid-template-columns: repeat(1, 1fr);
+  }
+    */
+  #container{
+     grid-template-columns: repeat(1, 1fr);
+  }
+}
